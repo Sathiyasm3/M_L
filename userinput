@@ -1,0 +1,28 @@
+def get_user_input():
+    cgpa_input = float(input("Enter CGPA (e.g., 7.1): "))
+    cgpa = discretize_cgpa(cgpa_input)
+
+    interactive = input("Interactive (Yes/No): ").strip().capitalize()
+    while interactive not in {"Yes", "No"}:
+        interactive = input("Please enter 'Yes' or 'No' for Interactive: ").strip().capitalize()
+
+    practical = input("Practical (Poor/Average/Good/Excellent): ").strip().capitalize()
+    while practical not in {"Poor", "Average", "Good", "Excellent"}:
+        practical = input("Please enter a valid Practical value (Poor/Average/Good/Excellent): ").strip().capitalize()
+
+    communication = input("Communication (Poor/Moderate/Good/Excellent): ").strip().capitalize()
+    while communication not in {"Poor", "Moderate", "Good", "Excellent"}:
+        communication = input("Please enter a valid Communication value (Poor/Moderate/Good/Excellent): ").strip().capitalize()
+
+    return {
+        "CGPA": cgpa,
+        "Interactive": interactive,
+        "Practical": practical,
+        "Communication": communication
+    }
+
+# Use the function to get user input
+new_sample = get_user_input()
+
+prediction = predict(decision_tree, new_sample)
+print(f"Predicted JobOffer: {prediction}")
